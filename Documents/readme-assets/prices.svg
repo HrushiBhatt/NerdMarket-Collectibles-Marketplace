@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="430" viewBox="0 0 1000 430" role="img" aria-label="Price tracking: price history chart, biggest movers list, and a binder price alert">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="0.25">
+      <stop offset="0" stop-color="#180e41"/>
+      <stop offset="1" stop-color="#340e41"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.04"/>
+    </pattern>
+    <clipPath id="panel"><rect width="1000" height="430" rx="20"/></clipPath>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3DDC97" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#3DDC97" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .line  { stroke-dasharray: 700; stroke-dashoffset: 0; animation: draw 9s ease-out infinite; }
+    .area  { animation: area 9s ease-out infinite; }
+    .tip   { animation: tip 9s ease-out infinite; }
+    .ring  { animation: ring 1.8s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+    .tab   { animation: tab 9s ease-in-out infinite; }
+    .row   { animation: row 9s ease-out infinite; }
+    .r2 { animation-delay: .15s; } .r3 { animation-delay: .3s; } .r4 { animation-delay: .45s; } .r5 { animation-delay: .6s; }
+    .toast { animation: toast 9s cubic-bezier(.2,.8,.2,1) infinite; }
+    .bell  { animation: ring-bell 9s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 10%; }
+    @keyframes draw  { 0% { stroke-dashoffset: 700; } 40%,100% { stroke-dashoffset: 0; } }
+    @keyframes area  { 0%,25% { opacity: 0; } 45%,100% { opacity: 1; } }
+    @keyframes tip   { 0%,40% { opacity: 0; transform: translateY(6px); } 48%,100% { opacity: 1; transform: translateY(0); } }
+    @keyframes ring  { 0% { transform: scale(.6); opacity: .9; } 100% { transform: scale(2.4); opacity: 0; } }
+    @keyframes tab   { 0%,30% { transform: translateX(0); } 36%,63% { transform: translateX(48px); } 69%,94% { transform: translateX(96px); } 100% { transform: translateX(0); } }
+    @keyframes row   { 0% { opacity: 0; transform: translateX(16px); } 8%,100% { opacity: 1; transform: translateX(0); } }
+    @keyframes toast { 0%,50% { transform: translateY(70px); opacity: 0; } 56%,94% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(70px); opacity: 0; } }
+    @keyframes ring-bell { 0%,56% { transform: rotate(0); } 58% { transform: rotate(16deg); } 60% { transform: rotate(-14deg); } 62% { transform: rotate(10deg); } 64%,100% { transform: rotate(0); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+
+  <g clip-path="url(#panel)">
+    <rect width="1000" height="430" fill="url(#bg)"/>
+    <rect width="1000" height="430" fill="url(#grid)"/>
+
+    <!-- Chart panel -->
+    <rect x="30" y="30" width="590" height="320" rx="14" fill="#0b0622" fill-opacity="0.6" stroke="#ffffff" stroke-opacity="0.08"/>
+    <text x="52" y="62" font-size="16" font-weight="700" fill="#ffffff">Price history</text>
+    <text x="52" y="82" class="mono" font-size="11.5" fill="#A895C9">GET /api/prices/card/{cardId}</text>
+
+    <rect class="tab" x="474" y="48" width="42" height="26" rx="13" fill="#A228E4"/>
+    <g font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">
+      <text x="495" y="65">2D</text>
+      <text x="543" y="65">7D</text>
+      <text x="591" y="65">21D</text>
+    </g>
+
+    <g stroke="#ffffff" stroke-opacity="0.07">
+      <line x1="60" y1="130" x2="600" y2="130"/>
+      <line x1="60" y1="170" x2="600" y2="170"/>
+      <line x1="60" y1="210" x2="600" y2="210"/>
+      <line x1="60" y1="250" x2="600" y2="250"/>
+      <line x1="60" y1="290" x2="600" y2="290"/>
+    </g>
+    <path class="area" d="M60 262 L105 255 L150 268 L195 240 L240 246 L285 225 L330 232 L375 205 L420 214 L465 188 L510 176 L555 182 L600 150 L600 300 L60 300 Z" fill="url(#area)"/>
+    <path class="line" d="M60 262 L105 255 L150 268 L195 240 L240 246 L285 225 L330 232 L375 205 L420 214 L465 188 L510 176 L555 182 L600 150"
+          fill="none" stroke="#3DDC97" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle class="ring" cx="600" cy="150" r="6" fill="none" stroke="#3DDC97" stroke-width="2"/>
+    <circle cx="600" cy="150" r="5" fill="#BFFFE3"/>
+
+    <g class="tip">
+      <rect x="440" y="100" width="152" height="32" rx="8" fill="#123a2c" stroke="#3DDC97"/>
+      <text x="516" y="121" text-anchor="middle" font-size="13" font-weight="700" fill="#BFFFE3">▲ +8.4% this window</text>
+    </g>
+    <g font-size="11" fill="#A895C9">
+      <text x="60" y="322">older snapshots</text>
+      <text x="600" y="322" text-anchor="end">latest</text>
+    </g>
+
+    <!-- Movers panel -->
+    <rect x="644" y="30" width="326" height="320" rx="14" fill="#0b0622" fill-opacity="0.6" stroke="#ffffff" stroke-opacity="0.08"/>
+    <text x="666" y="62" font-size="16" font-weight="700" fill="#ffffff">Biggest movers</text>
+    <text x="666" y="82" class="mono" font-size="11.5" fill="#A895C9">/api/prices/biggest-movers</text>
+
+    <g font-size="13">
+      <g class="row">
+        <rect x="660" y="100" width="294" height="40" rx="8" fill="#ffffff" fill-opacity="0.04"/>
+        <circle cx="676" cy="120" r="5" fill="#FFD84D"/>
+        <text x="690" y="118" fill="#ffffff" font-weight="600">Charizard ex</text>
+        <text x="690" y="133" font-size="10" fill="#A895C9" letter-spacing="1">POKÉMON</text>
+        <text x="942" y="125" text-anchor="end" fill="#3DDC97" font-weight="800">▲ 12.4%</text>
+      </g>
+      <g class="row r2">
+        <rect x="660" y="146" width="294" height="40" rx="8" fill="#ffffff" fill-opacity="0.04"/>
+        <circle cx="676" cy="166" r="5" fill="#E8A87C"/>
+        <text x="690" y="164" fill="#ffffff" font-weight="600">Black Lotus</text>
+        <text x="690" y="179" font-size="10" fill="#A895C9" letter-spacing="1">MTG</text>
+        <text x="942" y="171" text-anchor="end" fill="#3DDC97" font-weight="800">▲ 8.1%</text>
+      </g>
+      <g class="row r3">
+        <rect x="660" y="192" width="294" height="40" rx="8" fill="#ffffff" fill-opacity="0.04"/>
+        <circle cx="676" cy="212" r="5" fill="#C77DFF"/>
+        <text x="690" y="210" fill="#ffffff" font-weight="600">Blue-Eyes White Dragon</text>
+        <text x="690" y="225" font-size="10" fill="#A895C9" letter-spacing="1">YU-GI-OH!</text>
+        <text x="942" y="217" text-anchor="end" fill="#3DDC97" font-weight="800">▲ 5.6%</text>
+      </g>
+      <g class="row r4">
+        <rect x="660" y="238" width="294" height="40" rx="8" fill="#ffffff" fill-opacity="0.04"/>
+        <circle cx="676" cy="258" r="5" fill="#E8A87C"/>
+        <text x="690" y="256" fill="#ffffff" font-weight="600">Sol Ring</text>
+        <text x="690" y="271" font-size="10" fill="#A895C9" letter-spacing="1">MTG</text>
+        <text x="942" y="263" text-anchor="end" fill="#FF5C7A" font-weight="800">▼ 3.9%</text>
+      </g>
+      <g class="row r5">
+        <rect x="660" y="284" width="294" height="40" rx="8" fill="#ffffff" fill-opacity="0.04"/>
+        <circle cx="676" cy="304" r="5" fill="#FFD84D"/>
+        <text x="690" y="302" fill="#ffffff" font-weight="600">Pikachu VMAX</text>
+        <text x="690" y="317" font-size="10" fill="#A895C9" letter-spacing="1">POKÉMON</text>
+        <text x="942" y="309" text-anchor="end" fill="#FF5C7A" font-weight="800">▼ 2.2%</text>
+      </g>
+    </g>
+    <text x="958" y="343" text-anchor="end" font-size="9.5" fill="#A895C9" fill-opacity="0.7">illustrative data</text>
+
+    <!-- Alert toast -->
+    <g class="toast">
+      <rect x="30" y="364" width="940" height="50" rx="12" fill="#2a1757" stroke="#A228E4" stroke-width="1.5"/>
+      <g transform="translate(58 389)">
+        <g class="bell">
+          <path d="M0 -11 a7 7 0 0 1 7 7 v6 l3 4 h-20 l3 -4 v-6 a7 7 0 0 1 7 -7 z" fill="#FFD84D"/>
+          <circle cx="0" cy="9" r="2.6" fill="#FFD84D"/>
+        </g>
+      </g>
+      <text x="80" y="385" font-size="13" font-weight="800" fill="#ffffff">Card Price Update</text>
+      <text x="80" y="403" font-size="12.5" fill="#E6DAF7">Card Charizard ex in your binder went up by 3.20%</text>
+      <text x="950" y="385" text-anchor="end" font-size="11.5" fill="#A895C9">daily at 08:00 · binder cards · |Δ| &gt; 1%</text>
+      <text x="950" y="403" text-anchor="end" class="mono" font-size="11" fill="#C77DFF">/topic/notifications/{username}</text>
+    </g>
+  </g>
+</svg>

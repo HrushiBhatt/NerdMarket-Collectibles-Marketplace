@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="330" viewBox="0 0 1000 330" role="img" aria-label="Card data pipeline: TCGdex, Scryfall and YGOPRODeck are normalized by MarketService into one MySQL market table">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="0.25">
+      <stop offset="0" stop-color="#180e41"/>
+      <stop offset="1" stop-color="#340e41"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.04"/>
+    </pattern>
+    <clipPath id="panel"><rect width="1000" height="330" rx="20"/></clipPath>
+    <path id="p1" d="M262 78 C 330 78, 330 150, 392 150"/>
+    <path id="p2" d="M262 160 L392 160"/>
+    <path id="p3" d="M262 242 C 330 242, 330 170, 392 170"/>
+    <path id="p4" d="M612 160 L742 160"/>
+  </defs>
+
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .flow { stroke-dasharray: 6 8; animation: flow 1.2s linear infinite; }
+    .core { animation: glow 2.4s ease-in-out infinite; }
+    .count { animation: blink 2.4s ease-in-out infinite; }
+    .row1 { animation: fill 3s ease-out infinite; }
+    .row2 { animation: fill 3s ease-out .4s infinite; }
+    .row3 { animation: fill 3s ease-out .8s infinite; }
+    @keyframes flow  { to { stroke-dashoffset: -28; } }
+    @keyframes glow  { 0%,100% { stroke-opacity: .55; } 50% { stroke-opacity: 1; } }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .7; } }
+    @keyframes fill  { 0% { transform: scaleX(0); } 40%,100% { transform: scaleX(1); } }
+    .row1, .row2, .row3 { transform-box: fill-box; transform-origin: left center; }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+
+  <g clip-path="url(#panel)">
+    <rect width="1000" height="330" fill="url(#bg)"/>
+    <rect width="1000" height="330" fill="url(#grid)"/>
+
+    <text x="30" y="34" font-size="13" font-weight="700" letter-spacing="2" fill="#A895C9">EXTERNAL APIS</text>
+    <text x="392" y="34" font-size="13" font-weight="700" letter-spacing="2" fill="#A895C9">NORMALIZE</text>
+    <text x="742" y="34" font-size="13" font-weight="700" letter-spacing="2" fill="#A895C9">UNIFIED STORE</text>
+
+    <!-- Sources -->
+    <g>
+      <rect x="30" y="50" width="232" height="56" rx="12" fill="#FFD84D" fill-opacity="0.08" stroke="#FFD84D" stroke-opacity="0.7"/>
+      <rect x="44" y="64" width="28" height="28" rx="7" fill="#FFD84D"/>
+      <text x="58" y="83" text-anchor="middle" font-size="13" font-weight="800" fill="#3A1A00">P</text>
+      <text x="84" y="75" font-size="15" font-weight="700" fill="#ffffff">TCGdex</text>
+      <text x="84" y="94" font-size="12" fill="#D9C8F0">Pokémon · crawls every set</text>
+    </g>
+    <g>
+      <rect x="30" y="132" width="232" height="56" rx="12" fill="#E8A87C" fill-opacity="0.08" stroke="#E8A87C" stroke-opacity="0.7"/>
+      <rect x="44" y="146" width="28" height="28" rx="7" fill="#E8A87C"/>
+      <text x="58" y="165" text-anchor="middle" font-size="13" font-weight="800" fill="#2A1A10">M</text>
+      <text x="84" y="157" font-size="15" font-weight="700" fill="#ffffff">Scryfall</text>
+      <text x="84" y="176" font-size="12" fill="#D9C8F0">MTG · search per set code</text>
+    </g>
+    <g>
+      <rect x="30" y="214" width="232" height="56" rx="12" fill="#C77DFF" fill-opacity="0.08" stroke="#C77DFF" stroke-opacity="0.75"/>
+      <rect x="44" y="228" width="28" height="28" rx="7" fill="#C77DFF"/>
+      <text x="58" y="247" text-anchor="middle" font-size="13" font-weight="800" fill="#2A0A3A">Y</text>
+      <text x="84" y="239" font-size="15" font-weight="700" fill="#ffffff">YGOPRODeck</text>
+      <text x="84" y="258" font-size="12" fill="#D9C8F0">Yu-Gi-Oh! · one bulk request</text>
+    </g>
+
+    <!-- Connectors -->
+    <g fill="none" stroke-width="2.5" stroke-linecap="round">
+      <use href="#p1" class="flow" stroke="#FFD84D"/>
+      <use href="#p2" class="flow" stroke="#E8A87C"/>
+      <use href="#p3" class="flow" stroke="#C77DFF"/>
+      <use href="#p4" class="flow" stroke="#3DDC97"/>
+    </g>
+    <g>
+      <rect x="-7" y="-9" width="14" height="18" rx="2" fill="#FFD84D">
+        <animateMotion dur="2.2s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion>
+      </rect>
+      <rect x="-7" y="-9" width="14" height="18" rx="2" fill="#E8A87C">
+        <animateMotion dur="2.2s" begin="0.7s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion>
+      </rect>
+      <rect x="-7" y="-9" width="14" height="18" rx="2" fill="#C77DFF">
+        <animateMotion dur="2.2s" begin="1.4s" repeatCount="indefinite"><mpath href="#p3"/></animateMotion>
+      </rect>
+      <rect x="-7" y="-9" width="14" height="18" rx="2" fill="#3DDC97">
+        <animateMotion dur="1.6s" repeatCount="indefinite"><mpath href="#p4"/></animateMotion>
+      </rect>
+    </g>
+
+    <!-- Normalizer -->
+    <rect class="core" x="392" y="60" width="220" height="200" rx="14" fill="#0b0622" fill-opacity="0.7" stroke="#A228E4" stroke-width="2"/>
+    <text x="410" y="88" font-size="15" font-weight="700" fill="#ffffff">MarketService</text>
+    <text x="410" y="106" font-size="12" fill="#A895C9">one shared Market model</text>
+    <g class="mono" font-size="12">
+      <text x="410" y="134" fill="#C77DFF">cardType<tspan x="520" fill="#E6DAF7">String</tspan></text>
+      <text x="410" y="153" fill="#C77DFF">cardName<tspan x="520" fill="#E6DAF7">String</tspan></text>
+      <text x="410" y="172" fill="#C77DFF">cardSet<tspan x="520" fill="#E6DAF7">String</tspan></text>
+      <text x="410" y="191" fill="#C77DFF">cardRarity<tspan x="520" fill="#E6DAF7">String</tspan></text>
+      <text x="410" y="210" fill="#C77DFF">price<tspan x="520" fill="#E6DAF7">double</tspan></text>
+      <text x="410" y="229" fill="#C77DFF">imageUrl<tspan x="520" fill="#E6DAF7">String</tspan></text>
+    </g>
+    <rect x="410" y="240" width="184" height="2" rx="1" fill="#A228E4" fill-opacity="0.5"/>
+
+    <!-- MySQL -->
+    <g transform="translate(742 70)">
+      <path d="M0 18 v140 a110 18 0 0 0 220 0 v-140" fill="#0b0622" fill-opacity="0.75" stroke="#3DDC97" stroke-opacity="0.8" stroke-width="2"/>
+      <ellipse cx="110" cy="18" rx="110" ry="18" fill="#123a2c" stroke="#3DDC97" stroke-width="2"/>
+      <path d="M0 64 a110 18 0 0 0 220 0" fill="none" stroke="#3DDC97" stroke-opacity="0.25"/>
+      <path d="M0 110 a110 18 0 0 0 220 0" fill="none" stroke="#3DDC97" stroke-opacity="0.25"/>
+      <text x="110" y="23" text-anchor="middle" font-size="13" font-weight="700" fill="#BFFFE3">MySQL · market</text>
+      <text class="count" x="110" y="100" text-anchor="middle" font-size="34" font-weight="800" fill="#ffffff">90,000+</text>
+      <text x="110" y="124" text-anchor="middle" font-size="13" fill="#D9C8F0">cards, one schema</text>
+      <rect class="row1" x="40" y="142" width="44" height="6" rx="3" fill="#FFD84D"/>
+      <rect class="row2" x="88" y="142" width="44" height="6" rx="3" fill="#E8A87C"/>
+      <rect class="row3" x="136" y="142" width="44" height="6" rx="3" fill="#C77DFF"/>
+    </g>
+
+    <!-- Footer -->
+    <rect y="286" width="1000" height="44" fill="#0b0622" fill-opacity="0.6"/>
+    <text x="30" y="313" font-size="12" class="mono" fill="#A895C9">import <tspan fill="#E6DAF7">GET /api/cards/{pokemon|mtg|yugioh}/fetch-all</tspan>  →  query <tspan fill="#E6DAF7">/api/cards/search/{name}</tspan> · <tspan fill="#E6DAF7">/api/cards/top10/{type}</tspan></text>
+  </g>
+</svg>

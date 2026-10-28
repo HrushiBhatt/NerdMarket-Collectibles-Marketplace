@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="230" viewBox="0 0 1000 230" role="img" aria-label="CI/CD: push to main triggers a Maven build, deploys the JAR to the server, and posts the result to Discord">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="0.25">
+      <stop offset="0" stop-color="#180e41"/>
+      <stop offset="1" stop-color="#340e41"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.04"/>
+    </pattern>
+    <clipPath id="panel"><rect width="1000" height="230" rx="20"/></clipPath>
+    <g id="check">
+      <circle r="13" fill="#3DDC97"/>
+      <path d="M-6 0 l4 4 l8 -8" fill="none" stroke="#0b0622" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </defs>
+
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .bar { animation: bar 8s ease-in-out infinite; transform-box: fill-box; transform-origin: left center; }
+    .c1 { animation: c1 8s ease-out infinite; }
+    .c2 { animation: c2 8s ease-out infinite; }
+    .c3 { animation: c3 8s ease-out infinite; }
+    .c4 { animation: c4 8s ease-out infinite; }
+    .s1 { animation: s1 8s ease-in-out infinite; }
+    .s2 { animation: s2 8s ease-in-out infinite; }
+    .s3 { animation: s3 8s ease-in-out infinite; }
+    .s4 { animation: s4 8s ease-in-out infinite; }
+    @keyframes bar { 0%,8% { transform: scaleX(0); } 30% { transform: scaleX(.320); } 60% { transform: scaleX(.686); } 85%,96% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+    @keyframes c1 { 0%,4% { opacity: 0; } 8%,96% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes c2 { 0%,28% { opacity: 0; } 32%,96% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes c3 { 0%,58% { opacity: 0; } 62%,96% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes c4 { 0%,83% { opacity: 0; } 87%,96% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes s1 { 0%,100% { stroke-opacity: .35; } 4% { stroke-opacity: 1; } 10% { stroke-opacity: .35; } }
+    @keyframes s2 { 0%,10%,34%,100% { stroke-opacity: .35; } 14%,28% { stroke-opacity: 1; } }
+    @keyframes s3 { 0%,32%,64%,100% { stroke-opacity: .35; } 36%,58% { stroke-opacity: 1; } }
+    @keyframes s4 { 0%,62%,90%,100% { stroke-opacity: .35; } 66%,84% { stroke-opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+
+  <g clip-path="url(#panel)">
+    <rect width="1000" height="230" fill="url(#bg)"/>
+    <rect width="1000" height="230" fill="url(#grid)"/>
+
+    <rect class="s1" x="30"  y="28" width="180" height="104" rx="12" fill="#0b0622" fill-opacity="0.6" stroke="#C77DFF" stroke-width="2"/>
+    <text x="48" y="58" font-size="15" font-weight="800" fill="#ffffff">Push</text>
+    <text x="48" y="82" class="mono" font-size="12" fill="#E2C2FF">git push → main</text>
+    <text x="48" y="104" font-size="12" fill="#A895C9">triggers the pipeline</text>
+
+    <rect class="s2" x="240" y="28" width="250" height="104" rx="12" fill="#0b0622" fill-opacity="0.6" stroke="#C77DFF" stroke-width="2"/>
+    <text x="258" y="58" font-size="15" font-weight="800" fill="#ffffff">build</text>
+    <text x="258" y="82" class="mono" font-size="12" fill="#E2C2FF">mvn clean package</text>
+    <text x="258" y="104" font-size="12" fill="#A895C9">runnable JAR as artifact · .m2 cached</text>
+
+    <rect class="s3" x="520" y="28" width="250" height="104" rx="12" fill="#0b0622" fill-opacity="0.6" stroke="#C77DFF" stroke-width="2"/>
+    <text x="538" y="58" font-size="15" font-weight="800" fill="#ffffff">deploy</text>
+    <text x="538" y="82" class="mono" font-size="12" fill="#E2C2FF">rsync Backend/ → ~/app</text>
+    <text x="538" y="104" font-size="12" fill="#A895C9">restart JAR in screen "nerdmarket"</text>
+
+    <rect class="s4" x="800" y="28" width="170" height="104" rx="12" fill="#0b0622" fill-opacity="0.6" stroke="#C77DFF" stroke-width="2"/>
+    <text x="818" y="58" font-size="15" font-weight="800" fill="#ffffff">Discord</text>
+    <text x="818" y="82" font-size="12" fill="#E2C2FF">started · success</text>
+    <text x="818" y="104" font-size="12" fill="#A895C9">or failure + log link</text>
+
+    <rect x="120" y="172" width="765" height="6" rx="3" fill="#ffffff" fill-opacity="0.1"/>
+    <rect class="bar" x="120" y="172" width="765" height="6" rx="3" fill="#3DDC97"/>
+    <g fill="#2a1757" stroke="#A228E4" stroke-width="2">
+      <circle cx="120" cy="175" r="13"/>
+      <circle cx="365" cy="175" r="13"/>
+      <circle cx="645" cy="175" r="13"/>
+      <circle cx="885" cy="175" r="13"/>
+    </g>
+    <use href="#check" class="c1" x="120" y="175"/>
+    <use href="#check" class="c2" x="365" y="175"/>
+    <use href="#check" class="c3" x="645" y="175"/>
+    <use href="#check" class="c4" x="885" y="175"/>
+    <text x="500" y="212" text-anchor="middle" font-size="11.5" fill="#A895C9">GitLab CI/CD · <tspan class="mono">.gitlab-ci.yml</tspan> · runs on every push to main</text>
+  </g>
+</svg>

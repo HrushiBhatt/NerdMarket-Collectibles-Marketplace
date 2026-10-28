@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="380" viewBox="0 0 1000 380" role="img" aria-label="Real-time chat: two clients exchange messages through the Spring STOMP broker, which persists history to MySQL">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="0.25">
+      <stop offset="0" stop-color="#180e41"/>
+      <stop offset="1" stop-color="#340e41"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.04"/>
+    </pattern>
+    <clipPath id="panel"><rect width="1000" height="380" rx="20"/></clipPath>
+    <g id="env">
+      <rect width="20" height="14" rx="3" fill="#7CC4FF"/>
+      <path d="M1 2 l9 6 l9 -6" fill="none" stroke="#0b0622" stroke-width="1.6"/>
+    </g>
+  </defs>
+
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .flow { stroke-dasharray: 5 6; animation: flow 1s linear infinite; }
+    .a1 { animation: show-a1 10s ease-out infinite; }
+    .b1 { animation: show-b1 10s ease-out infinite; }
+    .b2 { animation: show-b2 10s ease-out infinite; }
+    .a2 { animation: show-a2 10s ease-out infinite; }
+    .p1  { opacity: 0; animation: p1  10s ease-in-out infinite; }
+    .p1b { opacity: 0; animation: p1b 10s ease-in-out infinite; }
+    .p1c { opacity: 0; animation: p1c 10s ease-in-out infinite; }
+    .p2  { opacity: 0; animation: p2  10s ease-in-out infinite; }
+    .p2b { opacity: 0; animation: p2b 10s ease-in-out infinite; }
+    .p2c { opacity: 0; animation: p2c 10s ease-in-out infinite; }
+    .hub { animation: hub 10s ease-in-out infinite; }
+    @keyframes flow { to { stroke-dashoffset: -22; } }
+    @keyframes show-a1 { 0%,4% { opacity: 0; transform: translateY(8px); } 8%,94% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; } }
+    @keyframes show-b1 { 0%,31% { opacity: 0; transform: translateY(8px); } 35%,94% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; } }
+    @keyframes show-b2 { 0%,43% { opacity: 0; transform: translateY(8px); } 47%,94% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; } }
+    @keyframes show-a2 { 0%,70% { opacity: 0; transform: translateY(8px); } 74%,94% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; } }
+    @keyframes p1  { 0%,8%  { opacity: 0; transform: translateX(0); } 9% { opacity: 1; } 18% { opacity: 1; transform: translateX(60px); } 19%,100% { opacity: 0; transform: translateX(60px); } }
+    @keyframes p1b { 0%,21% { opacity: 0; transform: translateX(0); } 22% { opacity: 1; } 31% { opacity: 1; transform: translateX(60px); } 32%,100% { opacity: 0; transform: translateX(60px); } }
+    @keyframes p1c { 0%,21% { opacity: 0; transform: translateY(0); } 22% { opacity: 1; } 31% { opacity: 1; transform: translateY(26px); } 32%,100% { opacity: 0; transform: translateY(26px); } }
+    @keyframes p2  { 0%,47% { opacity: 0; transform: translateX(0); } 48% { opacity: 1; } 57% { opacity: 1; transform: translateX(-60px); } 58%,100% { opacity: 0; transform: translateX(-60px); } }
+    @keyframes p2b { 0%,60% { opacity: 0; transform: translateX(0); } 61% { opacity: 1; } 70% { opacity: 1; transform: translateX(-60px); } 71%,100% { opacity: 0; transform: translateX(-60px); } }
+    @keyframes p2c { 0%,60% { opacity: 0; transform: translateY(0); } 61% { opacity: 1; } 70% { opacity: 1; transform: translateY(26px); } 71%,100% { opacity: 0; transform: translateY(26px); } }
+    @keyframes hub { 0%,16%,26%,55%,66%,100% { stroke-opacity: .5; } 20%,60% { stroke-opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+
+  <g clip-path="url(#panel)">
+    <rect width="1000" height="380" fill="url(#bg)"/>
+    <rect width="1000" height="380" fill="url(#grid)"/>
+
+    <!-- Wires -->
+    <g fill="none" stroke="#7CC4FF" stroke-opacity="0.6" stroke-width="2">
+      <path class="flow" d="M250 130 H330"/>
+      <path class="flow" d="M670 130 H750"/>
+      <path class="flow" d="M500 210 V250" stroke="#3DDC97"/>
+    </g>
+
+    <!-- Client A -->
+    <rect x="40" y="30" width="210" height="300" rx="22" fill="#120a33" stroke="#A228E4" stroke-width="2"/>
+    <text x="60" y="64" font-size="15" font-weight="800" fill="#ffffff"># Pokémon</text>
+    <text x="60" y="82" font-size="10.5" letter-spacing="1" fill="#A895C9">CARD_TYPE ROOM</text>
+    <line x1="52" y1="94" x2="238" y2="94" stroke="#ffffff" stroke-opacity="0.08"/>
+    <g class="a1" font-size="12.5">
+      <rect x="66" y="118" width="172" height="30" rx="15" fill="#A228E4"/>
+      <text x="78" y="138" fill="#ffffff">Anyone trading Charizard?</text>
+    </g>
+    <g class="a2" font-size="12.5">
+      <text x="56" y="174" font-size="10.5" fill="#A895C9">holo_hunter</text>
+      <rect x="52" y="180" width="160" height="30" rx="15" fill="#ffffff" fill-opacity="0.1"/>
+      <text x="64" y="200" fill="#E6DAF7">Yes, want my Sol Ring?</text>
+    </g>
+    <rect x="52" y="288" width="186" height="28" rx="14" fill="#0b0622" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="66" y="306" font-size="11.5" fill="#A895C9">Message # Pokémon</text>
+    <text x="145" y="350" text-anchor="middle" font-size="12" font-weight="700" fill="#D9C8F0">deckbuilder</text>
+
+    <!-- Client B -->
+    <rect x="750" y="30" width="210" height="300" rx="22" fill="#120a33" stroke="#A228E4" stroke-width="2"/>
+    <text x="770" y="64" font-size="15" font-weight="800" fill="#ffffff"># Pokémon</text>
+    <text x="770" y="82" font-size="10.5" letter-spacing="1" fill="#A895C9">CARD_TYPE ROOM</text>
+    <line x1="762" y1="94" x2="948" y2="94" stroke="#ffffff" stroke-opacity="0.08"/>
+    <g class="b1" font-size="12.5">
+      <text x="766" y="112" font-size="10.5" fill="#A895C9">deckbuilder</text>
+      <rect x="762" y="118" width="176" height="30" rx="15" fill="#ffffff" fill-opacity="0.1"/>
+      <text x="774" y="138" fill="#E6DAF7">Anyone trading Charizard?</text>
+    </g>
+    <g class="b2" font-size="12.5">
+      <rect x="788" y="180" width="160" height="30" rx="15" fill="#A228E4"/>
+      <text x="800" y="200" fill="#ffffff">Yes, want my Sol Ring?</text>
+    </g>
+    <rect x="762" y="288" width="186" height="28" rx="14" fill="#0b0622" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="776" y="306" font-size="11.5" fill="#A895C9">Message # Pokémon</text>
+    <text x="855" y="350" text-anchor="middle" font-size="12" font-weight="700" fill="#D9C8F0">holo_hunter</text>
+
+    <!-- Broker -->
+    <rect class="hub" x="330" y="60" width="340" height="150" rx="14" fill="#0b0622" fill-opacity="0.85" stroke="#7CC4FF" stroke-width="2"/>
+    <text x="500" y="90" text-anchor="middle" font-size="15" font-weight="800" fill="#ffffff">Spring STOMP broker</text>
+    <text x="500" y="108" text-anchor="middle" font-size="11" fill="#A895C9">SEND /app/…  ·  SUBSCRIBE /topic/…</text>
+    <g class="mono" font-size="11.5">
+      <rect x="346" y="120" width="308" height="22" rx="6" fill="#7CC4FF" fill-opacity="0.14"/>
+      <text x="356" y="135" fill="#7CC4FF">/ws/chat</text>
+      <text x="644" y="135" text-anchor="end" fill="#E6DAF7">/topic/chat/{roomId}</text>
+      <text x="356" y="161" fill="#C77DFF">/ws/notifications</text>
+      <text x="644" y="161" text-anchor="end" fill="#E6DAF7">/topic/notifications</text>
+      <text x="356" y="187" fill="#3DDC97">/ws/scanning</text>
+      <text x="644" y="187" text-anchor="end" fill="#E6DAF7">/topic/scan-result</text>
+    </g>
+
+    <!-- MySQL -->
+    <g transform="translate(420 250)">
+      <path d="M0 10 v44 a80 10 0 0 0 160 0 v-44" fill="#0b0622" stroke="#3DDC97" stroke-opacity="0.8" stroke-width="2"/>
+      <ellipse cx="80" cy="10" rx="80" ry="10" fill="#123a2c" stroke="#3DDC97" stroke-width="2"/>
+      <text x="80" y="40" text-anchor="middle" font-size="12" font-weight="700" fill="#BFFFE3">chat history</text>
+      <text x="80" y="56" text-anchor="middle" class="mono" font-size="10.5" fill="#A895C9">ChatMessage</text>
+    </g>
+    <text x="500" y="350" text-anchor="middle" font-size="11.5" fill="#A895C9">Rooms per game, plus moderator and admin rooms · <tspan class="mono" fill="#D9C8F0">GET /chat/rooms/{roomId}/history</tspan></text>
+
+    <!-- Messages in flight -->
+    <use href="#env" class="p1"  x="250" y="123"/>
+    <use href="#env" class="p1b" x="670" y="123"/>
+    <use href="#env" class="p1c" x="490" y="210"/>
+    <use href="#env" class="p2"  x="730" y="123"/>
+    <use href="#env" class="p2b" x="310" y="123"/>
+    <use href="#env" class="p2c" x="490" y="210"/>
+  </g>
+</svg>
